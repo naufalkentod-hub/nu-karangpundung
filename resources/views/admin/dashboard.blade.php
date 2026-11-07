@@ -80,11 +80,17 @@
                 <a href="{{ route('admin.agenda.index') }}" class="btn btn-outline-success text-start py-2 fw-semibold">
                     <i class="fa-solid fa-calendar-plus me-2"></i> Kelola Agenda
                 </a>
+                <a href="{{ route('admin.berita.index') }}" class="btn btn-outline-success text-start py-2 fw-semibold">
+                    <i class="fa-solid fa-newspaper me-2"></i> Kelola Berita
+                </a>
                 <a href="{{ route('admin.wisata.index') }}" class="btn btn-outline-success text-start py-2 fw-semibold">
                     <i class="fa-solid fa-map-pin me-2"></i> Kelola Wisata Desa
                 </a>
                 <a href="{{ route('admin.saran.index') }}" class="btn btn-outline-success text-start py-2 fw-semibold">
                     <i class="fa-solid fa-comments me-2"></i> Lihat Kotak Saran
+                </a>
+                <a href="{{ route('admin.infaq.index') }}" class="btn btn-outline-success text-start py-2 fw-semibold">
+                    <i class="fa-solid fa-hand-holding-heart me-2"></i> Kelola Infaq
                 </a>
             </div>
         </div>

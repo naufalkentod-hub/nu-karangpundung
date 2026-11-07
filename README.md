@@ -57,3 +57,22 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Sistem Infaq IPNU Karangpundung
+
+Halaman publik tersedia di `/infaq`. Donasi menggunakan transfer manual dan selalu dibuat dengan status `pending`; transaksi hanya dihitung setelah admin memeriksa mutasi dan memverifikasinya. Identitas donatur dan pesan tidak ditampilkan pada riwayat publik.
+
+### Menyiapkan aplikasi
+
+1. Atur `ADMIN_USERNAME` dan `ADMIN_PASSWORD_HASH` di `.env`. Hasilkan hash dengan membuka `php artisan tinker`, lalu menjalankan `Hash::make('kata-sandi-unik-yang-kuat')`. Salin hasil hash ke `.env` dengan tanda kutip tunggal (`ADMIN_PASSWORD_HASH='$2y$...'`) agar karakter `$` tidak diinterpolasi; jangan menyimpan kata sandi biasa di source code atau membagikannya.
+2. Isi `INFAQ_BANK_NAME`, `INFAQ_ACCOUNT_NUMBER`, dan `INFAQ_ACCOUNT_HOLDER` hanya dengan rekening resmi organisasi. Selama ketiganya belum diatur, situs tidak menampilkan instruksi transfer dan tombol konfirmasi pembayaran tidak aktif.
+3. Jalankan `php artisan optimize:clear` setelah mengubah `.env`, lalu jalankan migration infaq secara additive:
+
+   ```powershell
+   php artisan migrate --force
+   ```
+
+   Migration tambahan `2026_10_10_000002_add_proof_path_to_infaqs_table` menambahkan lokasi bukti transfer privat. Bukti hanya dapat diakses melalui dashboard yang dilindungi middleware admin.
+4. Masuk melalui `/login`, buka **Kelola Infaq** di dashboard admin, dan periksa mutasi rekening sebelum memasukkan referensi verifikasi. Donatur harus mengunggah bukti transfer; sistem mengubah status menjadi `pending_verification`, bukan `paid`. Jangan tandai transaksi berhasil hanya berdasarkan konfirmasi donor.
+
+Permohonan infaq tetap dapat dicatat dengan status `pending` walaupun rekening belum dikonfigurasi. Dalam kondisi itu, donatur diminta menunggu instruksi pengurus dan tidak dapat mengirim konfirmasi transfer. Setelah detail rekening resmi ditambahkan ke `.env`, instruksi transfer dan unggah bukti tersedia pada detail transaksi. Belum ada payment gateway atau webhook yang terhubung; QRIS, transfer otomatis, dan verifikasi callback memerlukan pemilihan penyedia, kredensial resmi, serta implementasi dan pengujian integrasi tersendiri.

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('print-title') - IPNU Karangpundung</title>
+    <title>@yield('print-title') - NU Karangpundung</title>
     <style>
         * { box-sizing: border-box; }
 
@@ -139,7 +139,7 @@
 
     <main class="print-sheet">
         <header class="print-header">
-            <p class="print-organization">IPNU KARANGPUNDUNG</p>
+            <p class="print-organization">NU KARANGPUNDUNG</p>
             <h1>@yield('print-title')</h1>
             <p>@yield('print-count')</p>
         </header>

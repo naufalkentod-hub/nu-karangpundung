@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Admin - IPNU Karangpundung</title>
+    <title>Login Admin - NU Karangpundung</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -34,15 +34,16 @@
         }
 
         .brand-mark {
-            width: 52px;
-            height: 52px;
             display: grid;
             place-items: center;
             margin: 0 auto 1rem;
-            color: #fff;
-            background: var(--ipnu-primary);
-            border-radius: 14px;
-            font-size: 1.35rem;
+        }
+
+        .brand-logo {
+            display: block;
+            width: 56px;
+            height: 56px;
+            object-fit: contain;
         }
 
         .form-control { min-height: 46px; }
@@ -58,9 +59,9 @@
 <body>
     <main class="login-panel">
         <div class="text-center mb-4">
-            <div class="brand-mark"><i class="fa-solid fa-seedling" aria-hidden="true"></i></div>
-            <h1 class="h3 fw-bold mb-1">IPNU Admin</h1>
-            <p class="text-secondary mb-0">Masuk ke panel administrasi</p>
+            <div class="brand-mark"><img class="brand-logo" src="{{ asset('images/logo-nu.png') }}" alt="Lambang Nahdlatul Ulama" width="56" height="56"></div>
+            <h1 class="h3 fw-bold mb-1">NU Karangpundung</h1>
+            <p class="text-secondary mb-0">Nahdlatul Ulama · Masuk ke panel administrasi</p>
         </div>
 
         @if ($errors->any())

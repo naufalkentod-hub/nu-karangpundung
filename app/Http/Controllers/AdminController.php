@@ -7,6 +7,8 @@ use App\Models\Anggota;
 use App\Models\Agenda;
 use App\Models\Wisata;
 use App\Models\Saran;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller {
@@ -24,7 +26,18 @@ class AdminController extends Controller {
             'password' => ['required', 'string'],
         ]);
 
-        if ($credentials['username'] !== 'admin' || $credentials['password'] !== '123') {
+        $adminUsername = config('admin.username');
+        $adminPasswordHash = config('admin.password_hash');
+
+        if (!is_string($adminUsername) || $adminUsername === '' || !is_string($adminPasswordHash) || $adminPasswordHash === '') {
+            Log::error('Admin login is unavailable because ADMIN_USERNAME or ADMIN_PASSWORD_HASH is not configured.');
+
+            return back()->withErrors([
+                'username' => 'Login admin belum dikonfigurasi. Hubungi pengelola situs.',
+            ])->onlyInput('username');
+        }
+
+        if (!hash_equals($adminUsername, $credentials['username']) || !Hash::check($credentials['password'], $adminPasswordHash)) {
             return back()->withErrors([
                 'username' => 'Username atau password salah.',
             ])->onlyInput('username');

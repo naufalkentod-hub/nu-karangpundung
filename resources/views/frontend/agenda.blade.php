@@ -6,7 +6,7 @@
 <div class="row mb-4">
     <div class="col-12 text-center py-4">
         <h2 class="fw-bold text-success">Agenda & Kegiatan</h2>
-        <p class="text-muted">Jadwal kegiatan, acara, dan program kerja IPNU Karangpundung.</p>
+        <p class="text-muted">Jadwal kegiatan, acara, dan program NU Karangpundung.</p>
         <hr class="w-25 mx-auto bg-success">
     </div>
 </div>

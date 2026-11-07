@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard - IPNU Karangpundung</title>
+    <title>Admin Dashboard - NU Karangpundung</title>
     <!-- Bootstrap 5.3 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Google Fonts: Plus Jakarta Sans -->
@@ -43,13 +43,34 @@
 
         .sidebar-brand {
             padding: 1.5rem 1.25rem;
-            font-size: 1.25rem;
-            font-weight: 800;
             color: var(--ipnu-primary);
             border-bottom: 1px solid #f1f5f9;
             display: flex;
             align-items: center;
             gap: 0.75rem;
+        }
+
+        .sidebar-brand-logo {
+            display: block;
+            flex: 0 0 40px;
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+
+        .sidebar-brand-name {
+            display: block;
+            font-size: 0.95rem;
+            font-weight: 800;
+            line-height: 1.15;
+        }
+
+        .sidebar-brand-caption {
+            display: block;
+            margin-top: 3px;
+            color: #64748b;
+            font-size: 0.65rem;
+            font-weight: 600;
         }
 
         .sidebar-nav {
@@ -174,8 +195,8 @@
     <!-- SIDEBAR -->
     <nav id="sidebar">
         <div class="sidebar-brand">
-            <i class="fa-solid fa-seedling text-success"></i>
-            <span>IPNU Admin</span>
+            <img class="sidebar-brand-logo" src="{{ asset('images/logo-nu.png') }}" alt="Lambang Nahdlatul Ulama" width="40" height="40">
+            <span><span class="sidebar-brand-name">NU Karangpundung</span><span class="sidebar-brand-caption">Nahdlatul Ulama</span></span>
         </div>
         <ul class="sidebar-nav">
             <li class="nav-item">
@@ -191,6 +212,11 @@
             <li class="nav-item">
                 <a href="{{ route('admin.agenda.index') }}" class="nav-link {{ request()->routeIs('admin.agenda*') ? 'active' : '' }}">
                     <i class="fa-solid fa-calendar-days fa-fw"></i> Agenda
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('admin.berita.index') }}" class="nav-link {{ request()->routeIs('admin.berita*') ? 'active' : '' }}">
+                    <i class="fa-solid fa-newspaper fa-fw"></i> Berita
                 </a>
             </li>
             <li class="nav-item">

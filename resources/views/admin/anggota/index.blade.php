@@ -4,7 +4,7 @@
 <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-4">
     <div>
         <h1 class="h4 fw-bold mb-1">Data Anggota</h1>
-        <p class="text-secondary mb-0">Kelola anggota IPNU Karangpundung.</p>
+        <p class="text-secondary mb-0">Kelola anggota NU Karangpundung.</p>
     </div>
     <form method="POST" action="{{ route('admin.cetak.preview') }}">
         @csrf

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'IPNU Karangpundung') | IPNU Karangpundung</title>
+    <title>@yield('title', 'NU Karangpundung') | NU Karangpundung</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -40,7 +40,7 @@
         .public-nav { min-height: 74px; }
         .public-brand { display: flex; align-items: center; gap: 10px; color: var(--ipnu-forest); }
         .public-brand:hover { color: var(--ipnu-green); }
-        .brand-mark { display: grid; place-items: center; width: 42px; height: 42px; color: #fff; background: var(--ipnu-forest); border-radius: 12px 12px 12px 3px; }
+        .brand-logo { display: block; flex: 0 0 42px; width: 42px; height: 42px; object-fit: contain; }
         .brand-name { display: block; font-size: 15px; font-weight: 800; line-height: 1.15; }
         .brand-caption { display: block; margin-top: 3px; color: var(--ipnu-muted); font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: .04em; }
         .public-nav .navbar-nav { gap: 4px; }
@@ -143,11 +143,11 @@
     </style>
 </head>
 <body>
-    <header class="public-header">
+    <header class="public-header">                                                                                                                                                                            
         <nav class="navbar navbar-expand-lg public-nav container" aria-label="Navigasi utama">
             <a href="{{ route('beranda') }}" class="navbar-brand public-brand">
-                <span class="brand-mark"><i class="fa-solid fa-seedling" aria-hidden="true"></i></span>
-                <span><span class="brand-name">IPNU Karangpundung</span><span class="brand-caption">Ikatan Pelajar Nahdlatul Ulama</span></span>
+                <img src="{{ asset('images/logo-nu.png') }}" alt="Logo NU" style="height: 42px; width: 42px; object-fit: contain;">
+                <span><span class="brand-name">NU Karangpundung</span><span class="brand-caption">Nahdlatul Ulama</span></span>
             </a>
             <button id="publicNavToggle" class="navbar-toggler" type="button" aria-controls="publicNavigation" aria-expanded="false" aria-label="Buka navigasi">
                 <i class="fa-solid fa-bars" aria-hidden="true"></i>
@@ -159,7 +159,8 @@
                     <a class="nav-link {{ request()->routeIs('struktur') ? 'active' : '' }}" href="{{ route('struktur') }}">Struktur</a>
                     <a class="nav-link {{ request()->routeIs('anggota') ? 'active' : '' }}" href="{{ route('anggota') }}">Anggota</a>
                     <a class="nav-link {{ request()->routeIs('agenda*') ? 'active' : '' }}" href="{{ route('agenda') }}">Agenda</a>
-                    <a class="nav-link {{ request()->routeIs('wisata*') ? 'active' : '' }}" href="{{ route('wisata') }}">Wisata Desa</a>
+                    <a class="nav-link {{ request()->routeIs('berita*') ? 'active' : '' }}" href="{{ route('berita.index') }}">Berita</a>
+                    <a class="nav-link {{ request()->routeIs('infaq*') ? 'active' : '' }}" href="{{ route('infaq') }}">Infaq</a>
                     <a class="nav-link {{ request()->routeIs('saran') ? 'active' : '' }}" href="{{ route('saran') }}">Kotak Saran</a>
                 </div>
             </div>
@@ -173,8 +174,8 @@
     <footer class="site-footer">
         <div class="footer-inner">
             <div>
-                <p class="footer-brand">IPNU Karangpundung</p>
-                <p class="footer-copy">Ruang tumbuh, belajar, dan berjuang bersama.</p>
+                <p class="footer-brand">NU Karangpundung</p>
+                <p class="footer-copy">Ruang tumbuh, belajar, dan berkhidmat bersama warga serta nahdliyin Karangpundung.</p>
             </div>
             <a class="footer-link" href="{{ route('login') }}">Masuk Admin <i class="fa-solid fa-arrow-right ms-1" aria-hidden="true"></i></a>
         </div>

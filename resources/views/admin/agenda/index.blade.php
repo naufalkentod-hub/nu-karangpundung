@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('content')
-<div class="mb-4"><h1 class="h4 fw-bold mb-1">Data Agenda</h1><p class="text-secondary mb-0">Kelola agenda kegiatan IPNU Karangpundung.</p></div>
+<div class="mb-4"><h1 class="h4 fw-bold mb-1">Data Agenda</h1><p class="text-secondary mb-0">Kelola agenda kegiatan NU Karangpundung.</p></div>
 
 <div class="card p-4 mb-4">
     <h2 class="h6 fw-bold mb-3">Tambah Agenda</h2>

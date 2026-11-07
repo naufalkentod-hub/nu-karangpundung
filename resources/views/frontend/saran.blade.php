@@ -7,7 +7,7 @@
     <div class="col-md-8">
         <div class="text-center py-4">
             <h2 class="fw-bold text-success">Kotak Saran & Aspirasi</h2>
-            <p class="text-muted">Sampaikan kritik, saran, atau masukan membangun untuk kemajuan IPNU Karangpundung.</p>
+            <p class="text-muted">Sampaikan kritik, saran, atau masukan membangun untuk kemajuan NU Karangpundung dan warga Karangpundung.</p>
             <hr class="w-25 mx-auto bg-success">
         </div>
 

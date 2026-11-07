@@ -6,7 +6,7 @@
 <div class="row mb-4">
     <div class="col-12 text-center py-4">
         <h2 class="fw-bold text-success">Struktur Kepengurusan</h2>
-        <p class="text-muted">Susunan Dewan Pembina, Badan Pengurus Harian, dan Departemen IPNU Karangpundung.</p>
+        <p class="text-muted">Susunan pengurus dan unsur organisasi NU Karangpundung.</p>
         <hr class="w-25 mx-auto bg-success">
     </div>
 </div>

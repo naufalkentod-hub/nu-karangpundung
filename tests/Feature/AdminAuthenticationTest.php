@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Models\Anggota;
 use App\Models\Wisata;
+use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
 
 class AdminAuthenticationTest extends TestCase
@@ -26,6 +27,8 @@ class AdminAuthenticationTest extends TestCase
             ->assertOk()
             ->assertSee('home-hero', false)
             ->assertSee('hero-primary', false)
+            ->assertSee('Kenali program infaq')
+            ->assertSee(route('infaq'))
             ->assertDontSee('Panel Kontrol Admin');
     }
 
@@ -37,6 +40,11 @@ class AdminAuthenticationTest extends TestCase
 
     public function test_invalid_credentials_return_an_error_to_login(): void
     {
+        config([
+            'admin.username' => 'admin',
+            'admin.password_hash' => Hash::make('test-admin-password'),
+        ]);
+
         $this->from(route('login'))
             ->post(route('login.process'), [
                 'username' => 'admin',
@@ -48,12 +56,31 @@ class AdminAuthenticationTest extends TestCase
 
     public function test_valid_credentials_start_admin_session_and_redirect_to_dashboard(): void
     {
+        config([
+            'admin.username' => 'admin',
+            'admin.password_hash' => Hash::make('test-admin-password'),
+        ]);
+
         $this->post(route('login.process'), [
             'username' => 'admin',
-            'password' => '123',
+            'password' => 'test-admin-password',
         ])
             ->assertRedirect(route('admin.dashboard'))
             ->assertSessionHas('admin_authenticated', true);
+    }
+
+    public function test_login_fails_closed_when_admin_credentials_are_not_configured(): void
+    {
+        config(['admin.username' => null, 'admin.password_hash' => null]);
+
+        $this->from(route('login'))
+            ->post(route('login.process'), [
+                'username' => 'admin',
+                'password' => 'any-password',
+            ])
+            ->assertRedirect(route('login'))
+            ->assertSessionHasErrors('username')
+            ->assertSessionMissing('admin_authenticated');
     }
 
     public function test_authenticated_admin_can_open_the_dashboard(): void
@@ -132,7 +159,7 @@ class AdminAuthenticationTest extends TestCase
 
         $this->post(route('admin.cetak.preview'), ['type' => 'anggota'])
             ->assertOk()
-            ->assertSee('IPNU KARANGPUNDUNG')
+            ->assertSee('NU KARANGPUNDUNG')
             ->assertSee('member-card')
             ->assertSee('storage/anggota/contoh.jpg')
             ->assertDontSee('Panel Kontrol Admin');

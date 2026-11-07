@@ -6,7 +6,7 @@
 <div class="row mb-4">
     <div class="col-12 text-center py-4">
         <h2 class="fw-bold text-success">Direktori Anggota</h2>
-        <p class="text-muted">Daftar seluruh anggota resmi IPNU Desa Karangpundung.</p>
+        <p class="text-muted">Daftar anggota dan warga yang berkhidmat bersama NU Karangpundung.</p>
         <hr class="w-25 mx-auto bg-success">
     </div>
 </div>
